@@ -4,7 +4,7 @@ import time
 from tagParse import tagParse
 from getHT import getHT
 from evaluate import evaluate
-import stdiomask
+import re
 
 from operator import itemgetter
 
@@ -35,6 +35,16 @@ def getData(driver):
             timetable.append(daytime)
     print(timetable)    
     return timetable
+
+def getCredit(driver):
+    driver.get('https://everytime.kr/timetable')
+    time.sleep(0.5)
+    html = driver.page_source
+    soup = bs(html, 'lxml')
+    score = str(soup.find(id="tableCredit"))
+    score = re.sub('<.+?>', '', score, 0).strip()
+
+    return score
 
 def clear(timetable):
     realTimeTable = []

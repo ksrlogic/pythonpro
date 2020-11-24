@@ -8,10 +8,10 @@
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from getData_Selenium import getData, getCredit
+from driver import driver
 
-score = 17
-
-class Ui_MainWindow(object):
+class Main_UI(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
         MainWindow.resize(1105, 677)
@@ -30,16 +30,18 @@ class Ui_MainWindow(object):
         self.checkBox_1 = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox_1.setGeometry(QtCore.QRect(50, 110, 81, 16))
         self.checkBox_1.setObjectName("checkBox_1")
+        self.checkBox_1.clicked.connect(self.CheckOverlapped)
 
         self.checkBox_2 = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox_2.setGeometry(QtCore.QRect(150, 110, 81, 16))
         self.checkBox_2.setObjectName("checkBox_2")
         self.checkBox_2.stateChanged.connect(self.isBooked)
+        self.checkBox_2.clicked.connect(self.CheckOverlapped)
 
         self.checkBox_3 = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox_3.setGeometry(QtCore.QRect(260, 110, 81, 16))
         self.checkBox_3.setObjectName("checkBox_3")
-
+        self.checkBox_3.clicked.connect(self.CheckOverlapped)
         
         self.checkBox_4 = QtWidgets.QCheckBox(self.centralwidget)
         self.checkBox_4.setGeometry(QtCore.QRect(60, 300, 81, 16))
@@ -146,6 +148,7 @@ class Ui_MainWindow(object):
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
+        self.credit = getCredit(driver)
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
         self.label.setText(_translate("MainWindow", "몇 가지만 더 물어볼게요."))
@@ -167,10 +170,11 @@ class Ui_MainWindow(object):
         self.checkBox_4.setText(_translate("MainWindow", "30분 미만"))
         self.checkBox_5.setText(_translate("MainWindow", "30분~1시간"))
         self.checkBox_6.setText(_translate("MainWindow", "1시간 이상"))
-        self.label_6.setText(_translate("MainWindow", "3. 당신의 학점은 %s점!" % score ))
+        self.label_6.setText(_translate("MainWindow", "3. 당신의 학점은 %s점!" % self.credit ))
         self.showTableBtn_2.setText(_translate("MainWindow", "더보기"))
-        if int(score) >= 16 :
+        if int(self.credit) >= 16 :
             self.score_label.setText("학점 기준표를 보고 본인이 몇 학점까지 들을 수 있는지 확인해주세요.")
+            self.showTableBtn_2.show()
         else:
             self.score_label.setText("16학점까지는 들어야 남은 학점을 이월할 수 있어요. 수정이 필요합니다.")
         self.showTableBtn_2.hide()
@@ -183,6 +187,7 @@ class Ui_MainWindow(object):
         self.lineEdit_4.setPlaceholderText(_translate("MainWindow", "4픽"))
         self.lineEdit_5.setPlaceholderText(_translate("MainWindow", "5픽"))
         self.pushButton.setText(_translate("MainWindow", "완료!"))
+        self.pushButton.clicked.connect(self.Complete)
     def isBooked(self):
         if self.checkBox_2.isChecked():
             self.showTableBtn.setHidden(not self.showTableBtn.isHidden())
@@ -198,17 +203,29 @@ class Ui_MainWindow(object):
             self.label_4.setHidden(not self.label_4.isHidden())
     
     def checkedImage(self):
-            self.showTableBtn.setHidden(not self.showTableBtn.isHidden())
-            self.pushButton_2.setHidden(not self.pushButton_2.isHidden())
-            self.pushButton_3.setHidden(not self.pushButton_3.isHidden())
-            self.label_3.setHidden(not self.label_3.isHidden())
-            self.label_4.setHidden(not self.label_4.isHidden())
+        self.showTableBtn.setHidden(not self.showTableBtn.isHidden())
+        self.pushButton_2.setHidden(not self.pushButton_2.isHidden())
+        self.pushButton_3.setHidden(not self.pushButton_3.isHidden())
+        self.label_3.setHidden(not self.label_3.isHidden())
+        self.label_4.setHidden(not self.label_4.isHidden())
+    def CheckOverlapped(self, wanted):
+        check1 = self.checkBox_1.isChecked()
+        check2 = self.checkBox_2.isChecked()
+        check3 = self.checkBox_3.isChecked()
+        current = wanted.isChecked()
+        if check1 or check2 or check3:
+            self.checkBox_1.setChecked(False)
+            self.checkBox_2.setChecked(False)
+            self.checkBox_3.setChecked(False)
+            wanted.setChecked(True)
 
+    def Complete(self):
+        print(22)
 if __name__ == "__main__":
     import sys
     app = QtWidgets.QApplication(sys.argv)
     MainWindow = QtWidgets.QMainWindow()
-    ui = Ui_MainWindow()
+    ui = Main_UI()
     ui.setupUi(MainWindow)
     MainWindow.show()
     sys.exit(app.exec_())

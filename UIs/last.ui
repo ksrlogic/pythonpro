@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>923</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(255, 255, 255);</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>50</x>
+      <y>40</y>
+      <width>691</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 36pt &quot;타이포_쌍문동 B&quot;;
+color: rgb(170, 170, 0);</string>
+    </property>
+    <property name="text">
+     <string>당신을 위한 학교 생활 팁</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_2">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>160</y>
+      <width>651</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+background-color: rgb(103, 83, 217);
+font: 13pt &quot;08SeoulNamsan&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string> 아침수업 : 아침수업은 힘들어요... </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_3">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>210</y>
+      <width>651</width>
+      <height>81</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+background-color: rgb(103, 83, 217);
+font: 13pt &quot;08SeoulNamsan&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string> 공강길이 : 점심은 먹을 수 있게 시간을 비워두고 공강을 만들어 보세요.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_4">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>270</y>
+      <width>651</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+background-color: rgb(103, 83, 217);
+font: 13pt &quot;08SeoulNamsan&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string> 연강개수 :  연강이 2개 이상이라고요? 힘들어요..</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_5">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>320</y>
+      <width>651</width>
+      <height>71</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+color: rgb(255, 255, 255);
+background-color: rgb(103, 83, 217);
+font: 13pt &quot;08SeoulNamsan&quot;;
+</string>
+    </property>
+    <property name="text">
+     <string> 공강요일 : 공강은 필수는 아니지만 있어야 몸이 편하긴 해요.</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_6">
+    <property name="geometry">
+     <rect>
+      <x>420</x>
+      <y>430</y>
+      <width>491</width>
+      <height>61</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">font: 75 22pt &quot;타이포_쌍문동 B&quot;;
+color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string>시간표 짜느라 수고 많았어요! </string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_7">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>490</y>
+      <width>721</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 75 11pt &quot;타이포_쌍문동 B&quot;;</string>
+    </property>
+    <property name="text">
+     <string>스스로 시간표 짜는 게 처음이라 고생 많았을 텐데, 이 프로그램이 도움이 되었기를 바라요</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_8">
+    <property name="geometry">
+     <rect>
+      <x>650</x>
+      <y>530</y>
+      <width>271</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(0, 0, 0);
+font: 75 11pt &quot;타이포_쌍문동 B&quot;;</string>
+    </property>
+    <property name="text">
+     <string>즐거운 새내기 라이프 보내세요 !</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>923</width>
+     <height>26</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

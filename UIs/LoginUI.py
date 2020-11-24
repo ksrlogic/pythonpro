@@ -11,16 +11,20 @@ import os
 import time
 from PyQt5 import QtCore, QtGui, QtWidgets
 
+
 sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
 
 from getData_Selenium import login, getData, clear
 from driver import driver
-from UIs import mainUI
-
+from UIs import MainUI
 from mainTorch import app, MainWindow
 
-ui = mainUI.Ui_MainWindow()
+
 realTimetable = []
+path = os.getcwd()
+ImageUrl = path.replace('\\', '/') + "/UIs/logo.png"
+
+print(ImageUrl)
 class Ui_LOGIN(object):
     def setupUi(self, LOGIN):
         LOGIN.setObjectName("LOGIN")
@@ -45,9 +49,9 @@ class Ui_LOGIN(object):
 
         self.label = QtWidgets.QLabel(LOGIN)
         self.label.setGeometry(QtCore.QRect(20, 20, 81, 71))
-        self.label.setStyleSheet("image: url(logo.png);")
+        self.label.setStyleSheet("image: url(%s);" % ImageUrl)
         self.label.setText("")
-        self.label.setPixmap(QtGui.QPixmap(":/newPrefix/logo.png"))
+        self.label.setPixmap(QtGui.QPixmap(":/newPrefix/%s" % ImageUrl))
         self.label.setScaledContents(True)
         self.label.setObjectName("label")
 
@@ -91,12 +95,11 @@ class Ui_LOGIN(object):
             alert.accept()
         except:
             "There is no alert"
+            self.window = QtWidgets.QMainWindow()
+            self.ui = MainUI.Main_UI()
+            self.ui.setupUi(self.window)
             MainWindow.close()
-            ui.setupUi(MainWindow)
-            MainWindow.show()
-
-            timetable = getData(driver)
-            realTimetable = clear(timetable)
+            self.window.show()
             print(realTimetable)
 
             
